@@ -16,3 +16,7 @@ RUN sed -i s/archive.ubuntu.com/free.nchc.org.tw/g /etc/apt/sources.list && \
 RUN cd && git clone https://github.com/opencv/opencv.git && cd opencv && \
     git checkout 4.1.1 && mkdir build && cd build && \
     cmake ../ && make && make install && cd && rm -rf opencv
+
+RUN cd && git clone -b 'v19.17' --single-branch https://github.com/davisking/dlib.git && \
+    cd dlib && \
+    python3 setup.py install && cd && rm -rf dlib
