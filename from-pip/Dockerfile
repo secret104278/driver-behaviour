@@ -1,5 +1,7 @@
-FROM python:3.7.4
+FROM python:3.6.8
 
-RUN pip install cmake==3.14.4 && \
-    pip install opencv-python==4.1.0.25 && \
-    pip install dlib==19.17.0
+RUN sed -i s/archive.ubuntu.com/free.nchc.org.tw/g /etc/apt/sources.list && \
+    echo "deb http://security.ubuntu.com/ubuntu xenial-security main" >> /etc/apt/sources.list && \
+    apt-get update && apt install -y cmake
+
+RUN pip install opencv-python dlib face_recognition requests onnxruntime
